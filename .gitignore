@@ -1,0 +1,7 @@
+.vscode
+
+.gemini
+
+*.log
+
+target
