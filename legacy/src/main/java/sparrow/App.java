@@ -1,13 +1,15 @@
 package sparrow;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
 public class App {
     public static void main(String[] args) {
-        GenericApplicationContext context = new GenericApplicationContext();
-        context.refresh();
+        GenericApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        System.out.println("Spring 容器啟動成功！目前的 Bean 數量：" + context.getBeanDefinitionCount());
+        MessageService messageService = context.getBean(MessageService.class);
+
+        System.out.println(messageService.getMessage());
 
         context.close();
     }
