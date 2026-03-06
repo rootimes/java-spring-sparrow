@@ -4,13 +4,13 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.GenericApplicationContext;
 
 public class App {
-    public static void main(String[] args) {
-        GenericApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+  public static void main(String[] args) {
+    GenericApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        MessageService messageService = context.getBean(MessageService.class);
+    MessageService messageService = context.getBean(MessageService.class);
 
-        System.out.println(messageService.getMessage());
+    System.out.println(messageService.getMessage());
 
-        context.close();
-    }
+    context.close();
+  }
 }
