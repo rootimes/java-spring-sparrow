@@ -2,6 +2,10 @@
 
 .gemini
 
+db
 *.log
+
+.env
+application.properties
 
 target

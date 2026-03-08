@@ -1,0 +1,33 @@
+services:
+  legacy:
+    build: ./legacy
+    ports:
+      - "${LEGACY_PORT}:8080"
+    networks:
+      - spring-sparrow
+    volumes:
+      - ./legacy/target/legacy-1.0.war:/usr/local/tomcat/webapps/ROOT.war
+      - ./legacy/context.xml:/usr/local/tomcat/conf/context.xml:ro
+      - ./legacy/server.xml:/usr/local/tomcat/conf/server.xml:ro
+    env_file:
+      - .env
+
+  db:
+    image: mysql:9.6.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "${DB_PORT}:3306"
+    networks:
+      - spring-sparrow
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    env_file:
+      - .env
+
+networks:
+  spring-sparrow:
+    driver: bridge

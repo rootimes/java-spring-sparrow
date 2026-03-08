@@ -37,6 +37,12 @@ public class JPAMySqlConfig {
 
     @Bean
     public DataSource dataSource() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("無法載入 MySQL 驅動程式", e);
+        }
+
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(env.getProperty("spring.datasource.url"));
         config.setUsername(env.getProperty("spring.datasource.username"));
