@@ -11,8 +11,8 @@ import sparrow.service.MessageService;
 @ComponentScan(basePackages = "sparrow")
 @EnableAspectJAutoProxy
 public class AppConfig {
-  @Bean
-  public MessageService messageService() {
-    return new MessageService();
-  }
+    @Bean
+    public MessageService messageService() {
+        return new MessageService();
+    }
 }

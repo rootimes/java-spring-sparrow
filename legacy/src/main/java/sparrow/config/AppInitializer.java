@@ -1,7 +1,6 @@
 package sparrow.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import org.springframework.lang.NonNull;
 
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
@@ -15,9 +14,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
     }
 
     @Override
-    @NonNull
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
-
 }

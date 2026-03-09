@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 import sparrow.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {}
+public interface UserRepository extends JpaRepository<User, Long> {
+}
