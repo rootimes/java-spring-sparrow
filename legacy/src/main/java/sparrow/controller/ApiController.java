@@ -14,6 +14,7 @@ public class ApiController {
     public Map<String, String> getStatus() {
         Map<String, String> status = new HashMap<>();
         status.put("status", "ok");
+        status.put("message", "API is running");
         return status;
     }
 }

@@ -1,38 +1,32 @@
 package sparrow;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
+import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+import org.junit.jupiter.api.Test;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import sparrow.controller.ApiController;
+
+public class AppTest extends RestDocsTest {
+    @Configuration
+    @EnableWebMvc
+    @ComponentScan(basePackageClasses = ApiController.class)
+    static class TestConfig {
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    @Test
+    public void documentGetStatusApi() throws Exception {
+        this.mockMvc.perform(get("/api/status"))
+                .andExpect(status().isOk())
+                .andDo(document("status-get",
+                        responseFields(
+                                fieldWithPath("status").description("API 處理狀態"),
+                                fieldWithPath("message").description("詳細回應訊息"))));
     }
 }

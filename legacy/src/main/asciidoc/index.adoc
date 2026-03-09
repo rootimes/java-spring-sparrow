@@ -1,0 +1,22 @@
+= Sparrow Legacy API Guide
+:toc: left
+:toclevels: 3
+:sectnums:
+
+== Introduction
+Sparrow 的 API 文件
+
+== Status API
+This API returns the current status of the application.
+
+=== 請求範例 (HTTP Request)
+include::{snippets}/status-get/http-request.adoc[]
+
+=== 請求範例 (cURL)
+include::{snippets}/status-get/curl-request.adoc[]
+
+=== 回應範例 (HTTP Response)
+include::{snippets}/status-get/http-response.adoc[]
+
+=== 回應欄位說明
+include::{snippets}/status-get/response-fields.adoc[]
