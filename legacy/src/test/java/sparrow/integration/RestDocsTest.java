@@ -1,4 +1,4 @@
-package sparrow;
+package sparrow.integration;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 
@@ -13,9 +13,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-@ExtendWith({ SpringExtension.class, RestDocumentationExtension.class })
-@ContextConfiguration(classes = { AppTest.TestConfig.class })
+import sparrow.config.AppConfig;
+import sparrow.config.WebConfig;
+
 @WebAppConfiguration
+@ExtendWith({ SpringExtension.class, RestDocumentationExtension.class })
+@ContextConfiguration(classes = { AppConfig.class, WebConfig.class })
 public class RestDocsTest {
     protected MockMvc mockMvc;
 

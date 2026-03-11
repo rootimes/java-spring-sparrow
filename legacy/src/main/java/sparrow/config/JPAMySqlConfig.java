@@ -25,7 +25,7 @@ import jakarta.persistence.EntityManagerFactory;
 @Configuration
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "sparrow.repository")
+@EnableJpaRepositories(basePackages = { "sparrow.post.repository", "sparrow.user" })
 public class JPAMySqlConfig {
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -37,16 +37,11 @@ public class JPAMySqlConfig {
 
     @Bean
     public DataSource dataSource() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("無法載入 MySQL 驅動程式", e);
-        }
-
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(env.getProperty("spring.datasource.url"));
         config.setUsername(env.getProperty("spring.datasource.username"));
         config.setPassword(env.getProperty("spring.datasource.password"));
+        config.setDriverClassName("com.mysql.cj.jdbc.Driver");
 
         return new HikariDataSource(config);
     }
@@ -56,7 +51,8 @@ public class JPAMySqlConfig {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
 
-        factoryBean.setPackagesToScan("sparrow.entity");
+        // 精確掃描實體套件
+        factoryBean.setPackagesToScan("sparrow.post.entity", "sparrow.user");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         factoryBean.setJpaVendorAdapter(vendorAdapter);

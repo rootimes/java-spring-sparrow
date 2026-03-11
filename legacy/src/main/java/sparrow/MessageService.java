@@ -1,4 +1,4 @@
-package sparrow.service;
+package sparrow;
 
 public class MessageService {
     public String getMessage() {

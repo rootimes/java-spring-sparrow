@@ -1,4 +1,4 @@
-package sparrow;
+package sparrow.integration;
 
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
@@ -7,19 +7,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import sparrow.controller.ApiController;
 
 public class AppTest extends RestDocsTest {
-    @Configuration
-    @EnableWebMvc
-    @ComponentScan(basePackageClasses = ApiController.class)
-    static class TestConfig {
-    }
-
     @Test
     public void documentGetStatusApi() throws Exception {
         this.mockMvc.perform(get("/api/status"))

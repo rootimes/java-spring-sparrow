@@ -6,9 +6,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.GenericApplicationContext;
 
 import sparrow.config.AppConfig;
-import sparrow.entity.User;
-import sparrow.repository.UserRepository;
-import sparrow.service.MessageService;
+import sparrow.user.User;
+import sparrow.user.UserRepository;
 
 public class App {
     public static void main(String[] args) {
