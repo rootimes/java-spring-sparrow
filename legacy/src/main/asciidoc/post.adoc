@@ -1,0 +1,82 @@
+== Post API
+This API manages posts including create, list, detail, update, and delete operations.
+
+=== Create Post
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-create/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-create/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-create/http-response.adoc[]
+
+=== Create Post with Source and Tags
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-create-with-source-tags/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-create-with-source-tags/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-create-with-source-tags/http-response.adoc[]
+
+=== Create Post (Reuse Existing Tag)
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-create-reuse-tag/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-create-reuse-tag/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-create-reuse-tag/http-response.adoc[]
+
+=== List Posts
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-list/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-list/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-list/http-response.adoc[]
+
+=== Get Post By Id
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-get/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-get/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-get/http-response.adoc[]
+
+=== Update Post
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-update/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-update/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-update/http-response.adoc[]
+
+=== Update Post with Tags
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-update-with-tags/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-update-with-tags/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-update-with-tags/http-response.adoc[]
+
+=== Delete Post
+==== 請求範例 (HTTP Request)
+include::{snippets}/post-delete/http-request.adoc[]
+
+==== 請求範例 (cURL)
+include::{snippets}/post-delete/curl-request.adoc[]
+
+==== 回應範例 (HTTP Response)
+include::{snippets}/post-delete/http-response.adoc[]
