@@ -20,14 +20,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 @Configuration
 @EnableWebMvc
 @EnableSpringDataWebSupport
-@ComponentScan(basePackages = "sparrow", useDefaultFilters = false,
-        includeFilters = {
-                @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
-                        Controller.class,
-                        RestController.class,
-                        ControllerAdvice.class
-                })
+@ComponentScan(basePackages = "sparrow", useDefaultFilters = false, includeFilters = {
+        @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
+                Controller.class,
+                RestController.class,
+                ControllerAdvice.class
         })
+})
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -40,9 +39,7 @@ public class WebConfig implements WebMvcConfigurer {
         ObjectMapper mapper = new ObjectMapper();
 
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 

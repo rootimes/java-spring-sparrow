@@ -30,8 +30,14 @@ public class User {
     @Column(nullable = false, unique = true, length = 255)
     private String email;
 
-    @Column(length = 500)
+    @Column(length = 255)
     private String description;
+
+    @Column(name = "refresh_token", length = 500)
+    private String refreshToken;
+
+    @Column(name = "refresh_token_expiration")
+    private java.time.LocalDateTime refreshTokenExpiration;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<Post> posts = new HashSet<>();
@@ -41,6 +47,22 @@ public class User {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
+    }
+
+    public java.time.LocalDateTime getRefreshTokenExpiration() {
+        return refreshTokenExpiration;
+    }
+
+    public void setRefreshTokenExpiration(java.time.LocalDateTime refreshTokenExpiration) {
+        this.refreshTokenExpiration = refreshTokenExpiration;
     }
 
     public String getName() {

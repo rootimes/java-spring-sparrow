@@ -96,8 +96,7 @@ public class PostService {
         existingPost.setUser(user);
         applyTags(existingPost, request.getTags());
 
-        Post updatedPost = postRepository.save(existingPost);
-        return postMapper.toResponse(updatedPost);
+        return postMapper.toResponse(existingPost);
     }
 
     @Transactional

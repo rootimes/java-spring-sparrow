@@ -25,15 +25,16 @@ import jakarta.persistence.EntityManagerFactory;
 @Configuration
 @PropertySource("classpath:application.properties")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = { "sparrow.post.repository", "sparrow.user" })
+@EnableJpaRepositories(basePackages = { "sparrow.post.repository", "sparrow.user", "sparrow.auth" })
 public class JPAMySqlConfig {
+
+    @Autowired
+    private Environment env;
+
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
-
-    @Autowired
-    private Environment env;
 
     @Bean
     public DataSource dataSource() {
@@ -51,7 +52,6 @@ public class JPAMySqlConfig {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource());
 
-        // 精確掃描實體套件
         factoryBean.setPackagesToScan("sparrow.post.entity", "sparrow.user");
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();

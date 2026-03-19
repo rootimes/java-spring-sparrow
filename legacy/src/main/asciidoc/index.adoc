@@ -47,4 +47,6 @@ http://localhost:8080
 
 include::status.adoc[]
 
+include::auth.adoc[]
+
 include::post.adoc[]
