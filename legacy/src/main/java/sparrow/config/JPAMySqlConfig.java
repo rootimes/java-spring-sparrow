@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -32,17 +31,12 @@ public class JPAMySqlConfig {
     private Environment env;
 
     @Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
-
-    @Bean
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(env.getProperty("spring.datasource.url"));
         config.setUsername(env.getProperty("spring.datasource.username"));
         config.setPassword(env.getProperty("spring.datasource.password"));
-        config.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        config.setDriverClassName(env.getProperty("spring.datasource.driver-class-name", "com.mysql.cj.jdbc.Driver"));
 
         return new HikariDataSource(config);
     }
@@ -61,7 +55,7 @@ public class JPAMySqlConfig {
 
         props.put("hibernate.show_sql", env.getProperty("spring.jpa.show-sql"));
         props.put("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
-        props.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        props.put("hibernate.dialect", env.getProperty("spring.jpa.properties.hibernate.dialect", "org.hibernate.dialect.MySQLDialect"));
 
         factoryBean.setJpaProperties(props);
         return factoryBean;
