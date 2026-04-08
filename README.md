@@ -29,6 +29,7 @@ Legacy 相關 Blog 文章：
 - [Spring Sparrow REST Docs](https://blog.codeicu.dev/posts/spring-sparrow/rest-docs/)
 - [Spring Sparrow CRUD](https://blog.codeicu.dev/posts/spring-sparrow/crud/)
 - [Spring Sparrow Integration Test](https://blog.codeicu.dev/posts/spring-sparrow/test/)
+- [Spring Sparrow Security](https://blog.codeicu.dev/posts/spring-sparrow/security/)
 
 ## 📁 Legacy 專案結構
 
